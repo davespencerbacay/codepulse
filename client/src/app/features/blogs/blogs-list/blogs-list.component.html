@@ -3,4 +3,27 @@
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/blogs/add']" class="btn btn-primary">Add Blog</a>
     </div>
+
+    <ng-container *ngIf="blogs$ | async as blogs">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Short Description</th>
+                    <th>Is Visible</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let blog of blogs">
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.shortDescription }}</td>
+                    <td>{{ blog.isVisible ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <a [routerLink]="['/admin/blogs/edit', blog.id]" class="btn btn-sm btn-secondary me-2">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
 </div>

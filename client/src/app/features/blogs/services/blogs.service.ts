@@ -15,4 +15,12 @@ export class BlogsService {
   createBlog(data: AddBlogPost): Observable<Blog> {
     return this.http.post<Blog>(`${environment.apiBaseUrl}/api/blogs`, data);
   }
+
+  getAllBlogs(): Observable<Blog[]> {
+    return this.http.get<Blog[]>(`${environment.apiBaseUrl}/api/blogs`);
+  }
+
+  deleteBlog(id: string): Observable<Blog> {
+    return this.http.delete<Blog>(`${environment.apiBaseUrl}/api/blogs/${id}`);
+  }
 }
