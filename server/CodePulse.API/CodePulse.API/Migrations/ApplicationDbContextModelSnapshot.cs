@@ -60,12 +60,12 @@ namespace CodePulse.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Blogss");
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("CodePulse.API.Models.Domain.Category", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -77,7 +77,7 @@ namespace CodePulse.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });

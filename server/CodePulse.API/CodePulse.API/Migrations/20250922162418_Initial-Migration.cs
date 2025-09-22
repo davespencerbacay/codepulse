@@ -12,7 +12,7 @@ namespace CodePulse.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Blogss",
+                name: "Blogs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -27,20 +27,20 @@ namespace CodePulse.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blogss", x => x.Id);
+                    table.PrimaryKey("PK_Blogs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UrlHandle = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
         }
 
@@ -48,7 +48,7 @@ namespace CodePulse.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Blogss");
+                name: "Blogs");
 
             migrationBuilder.DropTable(
                 name: "Categories");

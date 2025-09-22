@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoryListComponent } from './features/category/category-list/category-list.component';
 import { AddCategoryComponent } from './features/category/add-category/add-category.component';
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
+import { BlogsListComponent } from './features/blogs/blogs-list/blogs-list.component';
+import { AddBlogComponent } from './features/blogs/add-blog/add-blog.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'admin/categories/:id',
     component: EditCategoryComponent
+  },
+  {
+    path: 'admin/blogs',
+    component: BlogsListComponent
+  },
+  {
+    path: 'admin/blogs/add',
+    component: AddBlogComponent
   }
 ];
 
