@@ -1,3 +1,5 @@
+import { Category } from "../../category/models/category.model";
+
 export interface Blog {
     id: string;
     title: string;
@@ -7,5 +9,6 @@ export interface Blog {
     urlHandle: string;
     publishedDate: Date;
     author: string;
-    isVisible: boolean;
+    isVisible: boolean; 
+    categories: Category[];
 } 

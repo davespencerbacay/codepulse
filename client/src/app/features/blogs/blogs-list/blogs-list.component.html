@@ -11,6 +11,7 @@
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Is Visible</th>
+                    <th>Categories</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,6 +20,12 @@
                     <td>{{ blog.title }}</td>
                     <td>{{ blog.shortDescription }}</td>
                     <td>{{ blog.isVisible ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <span *ngFor="let category of blog.categories">
+                            <span class="badge bg-secondary mr-3">{{ category.name }}</span>
+                            &nbsp;
+                        </span>
+                    </td>
                     <td>
                         <a [routerLink]="['/admin/blogs/edit', blog.id]" class="btn btn-sm btn-secondary me-2">Edit</a>
                     </td>
