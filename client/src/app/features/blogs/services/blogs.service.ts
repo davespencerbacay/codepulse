@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class BlogsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    
+  }
 
   createBlog(data: AddBlogPost): Observable<Blog> {
     return this.http.post<Blog>(`${environment.apiBaseUrl}/api/blogs`, data);
