@@ -98,5 +98,95 @@ namespace CodePulse.API.Controllers
 
             return Ok(response);
         }
+
+        // GET: /api/blogs/{id}
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetBlogById([FromRoute] Guid id)
+        {
+            var blog = await blogsRepository.GetByIdAsync(id);
+
+            if(blog is null)
+            {
+                return NotFound();
+            }
+
+            var response = new BlogsDTO
+            {
+                Id = blog.Id,
+                Author = blog.Author,
+                Content = blog.Content,
+                FeaturedImageUrl = blog.FeaturedImageUrl,
+                IsVisible = blog.IsVisible,
+                PublishedDate = blog.PublishedDate,
+                ShortDescription = blog.ShortDescription,
+                Title = blog.Title,
+                UrlHandle = blog.UrlHandle,
+                Categories = blog.Categories.Select(x => new CategoryDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
+            };
+            return Ok(response);
+
+        }
+
+        // PUT: /api/blogs/{id}
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateBlogById([FromRoute] Guid id, UpdateBlogRequestDTO request)
+        {
+            var blog = new Blogs
+            {
+                Id = id,
+                Author = request.Author,
+                Content = request.Content,
+                FeaturedImageUrl = request.FeaturedImageUrl,
+                IsVisible = request.IsVisible,
+                PublishedDate = request.PublishedDate,
+                ShortDescription = request.ShortDescription,
+                Title = request.Title,
+                UrlHandle = request.UrlHandle,
+                Categories = new List<Category>()
+            };
+
+            foreach(var category in request.Categories)
+            {
+                var existingCategory = await categoryRepository.GetById(category);
+                if(existingCategory != null)
+                {
+                    blog.Categories.Add(existingCategory);
+                }
+            }
+
+            var updatedBlog = await blogsRepository.UpdateAsync(blog);
+
+            if(updatedBlog is null)
+            {
+                return NotFound();
+            }
+
+            var response = new BlogsDTO
+                            {
+                Id = updatedBlog.Id,
+                Author = updatedBlog.Author,
+                Content = updatedBlog.Content,
+                FeaturedImageUrl = updatedBlog.FeaturedImageUrl,
+                IsVisible = updatedBlog.IsVisible,
+                PublishedDate = updatedBlog.PublishedDate,
+                ShortDescription = updatedBlog.ShortDescription,
+                Title = updatedBlog.Title,
+                UrlHandle = updatedBlog.UrlHandle,
+                Categories = updatedBlog.Categories.Select(x => new CategoryDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
+            };
+
+            return Ok(response);
+        }
     }
 }

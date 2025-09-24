@@ -6,5 +6,7 @@ namespace CodePulse.API.Repositories.Interface
     {
         Task<Blogs> CreateAsync(Blogs blogs);
         Task<IEnumerable<Blogs>> GetAllAsync();
+        Task<Blogs?> GetByIdAsync(Guid id);
+        Task<Blogs?> UpdateAsync(Blogs blog);
     }
 }
