@@ -35,4 +35,8 @@ export class BlogsService {
     return this.http.put<Blog>(`${environment.apiBaseUrl}/api/blogs/${id}`, data);
   }
 
+  deleteBlogById(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiBaseUrl}/api/blogs/${id}`);
+  }
+
 }
