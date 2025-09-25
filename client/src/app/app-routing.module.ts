@@ -7,11 +7,16 @@ import { BlogsListComponent } from './features/blogs/blogs-list/blogs-list.compo
 import { AddBlogComponent } from './features/blogs/add-blog/add-blog.component';
 import { EditBlogComponent } from './features/blogs/edit-blog/edit-blog.component';
 import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'blogs/:url',
+    component: BlogDetailsComponent
   },
   {
     path: 'admin/categories',

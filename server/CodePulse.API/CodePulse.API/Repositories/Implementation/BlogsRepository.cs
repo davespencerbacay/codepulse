@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodePulse.API.Repositories.Implementation
 {
-    public class BlogsRepository: IBlogsRepository
+    public class BlogsRepository : IBlogsRepository
     {
         private readonly ApplicationDbContext dbContext;
         public BlogsRepository(ApplicationDbContext dbContext)
@@ -42,6 +42,11 @@ namespace CodePulse.API.Repositories.Implementation
         public async Task<Blogs?> GetByIdAsync(Guid id)
         {
             return await dbContext.Blogs.Include(x => x.Categories).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Blogs?> GetByUrlHandleAsync(string urlHandle)
+        {
+            return await dbContext.Blogs.Include(x => x.Categories).FirstOrDefaultAsync(x => x.UrlHandle == urlHandle);
         }
 
         public async Task<Blogs?> UpdateAsync(Blogs blog)

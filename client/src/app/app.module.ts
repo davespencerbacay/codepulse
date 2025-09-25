@@ -15,6 +15,7 @@ import { AddBlogComponent } from './features/blogs/add-blog/add-blog.component';
 import { EditBlogComponent } from './features/blogs/edit-blog/edit-blog.component';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HomeComponent } from './features/public/home/home.component';
     AddBlogComponent,
     EditBlogComponent,
     ImageSelectorComponent,
-    HomeComponent
+    HomeComponent,
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,
