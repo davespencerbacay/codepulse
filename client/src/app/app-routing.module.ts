@@ -6,8 +6,13 @@ import { EditCategoryComponent } from './features/category/edit-category/edit-ca
 import { BlogsListComponent } from './features/blogs/blogs-list/blogs-list.component';
 import { AddBlogComponent } from './features/blogs/add-blog/add-blog.component';
 import { EditBlogComponent } from './features/blogs/edit-blog/edit-blog.component';
+import { HomeComponent } from './features/public/home/home.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'admin/categories',
     component: CategoryListComponent
